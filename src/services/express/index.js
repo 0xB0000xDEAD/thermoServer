@@ -36,6 +36,19 @@ export default (apiRoot, routes) => {
 
   const app = express()
 
+  /*** express-vue ***/
+  var expressVue = require('express-vue')
+  const vueOptions = {
+    rootPath : path.join(__dirname, '../../views'),
+    layout : {
+      start : '<div id="app">',
+      end : '</div>'
+    }
+  }
+  const expressVueMiddleware = expressVue.init(vueOptions);
+  app.use(expressVueMiddleware);
+
+
 
 
 
