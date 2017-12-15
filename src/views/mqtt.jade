@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1.
+        MQTT
+    form#reset(name="reset",method="post",action="/reset")        
+        button#btnSubmit(type="submit") Reset
+
+    form#reset(name="addTarget",method="post",action="/addTarget")        
+        button#btnSubmit(type="submit") add shit
+    
+    ul 
+    each message , i in messages
+        li
+            a= message.message.payload
