@@ -4,7 +4,7 @@ import {
 import {
   middleware as query
 } from 'querymen'
-import test from './chart'
+//import test from './chart'
 
 const router = new Router()
 
@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     title: 'dashboard'
   });
   //console.log('fattissimo')
-  test()
+  //test();
 })
 router.get('/test', function(req, res, next) {
   const data = {
