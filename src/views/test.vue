@@ -1,27 +1,27 @@
 <template>
-  <div id="app">
-    <img src="/assets/logo.png"></p>
-    <br>
-    <p>Questa è una view con vue!</p>
+<div id="app">
+  <img src="./assets/logo.png"></p>
+  <br>
+  <p>Questa è una view con vue!</p>
+  <br>
+  <em> enjoy your data</em>
+  <br>
+  <p> {{otherData}}</p>
 
-    <trend
-  :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
-  :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
-  auto-draw
-  smooth>
-</trend>
-  </div>
+  <trend :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]" :gradient="['#6fa8dc', '#42b983', '#2c3e50']" auto-draw smooth>
+  </trend>
+</div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import Trend from "vuetrend";
 
-import Vue from 'vue'
-import Trend from 'vuetrend'
+  Vue.use(Trend);
+  export default {
+    name: "app"
+  };
 
-Vue.use(Trend)
-export default {
-  name: 'app'
-}
 </script>
 
 <style>

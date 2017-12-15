@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 })
 router.get('/test', function(req, res, next) {
   const data = {
-    otherData: 'something else'
+    otherData :  'something else'
   };
   const vueOptions = {
     head: {
