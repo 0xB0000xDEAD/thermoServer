@@ -2,7 +2,6 @@ import { Router } from 'express'
 import user from './user'
 import auth from './auth'
 import thermoNode from './thermoNode'
-import testApi from './testApi'
 
 import dash from './dash'
 
@@ -35,7 +34,6 @@ const router = new Router()
 router.use('/users', user)
 router.use('/auth', auth)
 router.use('/thermoNodes', thermoNode)
-router.use('/testApis', testApi)
 
 router.use('/dash', dash)
 
