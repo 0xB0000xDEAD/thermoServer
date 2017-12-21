@@ -1,8 +1,5 @@
-
-
 /* eslint-disable no-unused-vars */
 import path from 'path'
-
 /* istanbul ignore next */
 const requireProcessEnv = (name) => {
   if (!process.env[name]) {
@@ -10,7 +7,6 @@ const requireProcessEnv = (name) => {
   }
   return process.env[name]
 }
-
 /* istanbul ignore next */
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv-safe')
@@ -19,9 +15,6 @@ if (process.env.NODE_ENV !== 'production') {
     sample: path.join(__dirname, '../.env.example')
   })
 }
-
-
-
 const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
@@ -64,6 +57,5 @@ const config = {
     }
   }
 }
-
 module.exports = Object.assign(config.all, config[config.all.env])
 export default module.exports

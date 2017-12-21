@@ -1,12 +1,25 @@
 import mongoose, { Schema } from 'mongoose'
-const thermoNodeSchema = new Schema({
+
+const nodeSchema = new Schema({
   name: {
     type: String
   },
-  status: {
+  temp: {
     type: String
   },
-  temp: {
+  temp1: {
+    type: String
+  },
+  temp2: {
+    type: String
+  },
+  temp3: {
+    type: String
+  },
+  temp4: {
+    type: String
+  },
+  status: {
     type: String
   }
 }, {
@@ -16,27 +29,31 @@ const thermoNodeSchema = new Schema({
     transform: (obj, ret) => { delete ret._id }
   }
 })
-thermoNodeSchema.methods = {
-  view(full) {
+
+nodeSchema.methods = {
+  view (full) {
     const view = {
       // simple view
       id: this.id,
       name: this.name,
+      temp: this.temp,
+      temp1: this.temp1,
+      temp2: this.temp2,
+      temp3: this.temp3,
+      temp4: this.temp4,
       status: this.status,
-      temp: this.temp0,
-      temp: this.temp1,
-      temp: this.temp2,
-      temp: this.temp3,
-      temp: this.temp4,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
-    return full ? { ...view
+
+    return full ? {
+      ...view
       // add properties for a full view
     } : view
   }
 }
-const model = mongoose.model('ThermoNode', thermoNodeSchema)
+
+const model = mongoose.model('Node', nodeSchema)
+
 export const schema = model.schema
-//console.log('model is a: ', typeof(model));
 export default model

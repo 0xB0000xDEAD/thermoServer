@@ -1,35 +1,11 @@
-import {
-  Router
-} from 'express'
-import {
-  middleware as query
-} from 'querymen'
-import {
-  middleware as body
-} from 'bodymen'
-import {
-  create,
-  index,
-  show,
-  update,
-  destroy
-} from './controller'
-import {
-  schema
-} from './model'
-export ThermoNode, {
-  schema
-}
-from './model'
-
-
-const router = new Router()
-const {
-  name,
-  status,
-  temp
-} = schema.tree
-
+import { Router } from "express";
+import { middleware as query } from "querymen";
+import { middleware as body } from "bodymen";
+import { create, index, show, update, destroy } from "./controller";
+import { schema } from "./model";
+export ThermoNode, { schema } from "./model";
+const router = new Router();
+const { name, status, temp } = schema.tree;
 /**
  * @api {post} /thermoNodes Create thermo node
  * @apiName CreateThermoNode
@@ -41,14 +17,11 @@ const {
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Thermo node not found.
  */
-router.post('/',
-  body({
-    name,
-    status,
-    temp
-  }),
-  create)
-
+router.post("/", body({
+  name,
+  status,
+  temp
+}), create);
 /**
  * @api {get} /thermoNodes Retrieve thermo nodes
  * @apiName RetrieveThermoNodes
@@ -57,18 +30,14 @@ router.post('/',
  * @apiSuccess {Object[]} thermoNodes List of thermo nodes.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-// router.get('/',
-//   query(),
-//   index)
-router.get('/',
-  query(),
-
-    function(req, res) {
-      //console.log(res);
-
-      res.render('thermo', { title: 'Express' })},
-
-  )
+router.get('/', query(), index)
+// aggiunta mia
+// router.get("/", query(), function(req, res) {
+//   //console.log(res);
+//   res.render("thermo", {
+//     title: "Express"
+//   });
+// });
 /**
  * @api {get} /thermoNodes/:id Retrieve thermo node
  * @apiName RetrieveThermoNode
@@ -77,9 +46,7 @@ router.get('/',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Thermo node not found.
  */
-router.get('/:id',
-  show)
-
+router.get("/:id", show);
 /**
  * @api {put} /thermoNodes/:id Update thermo node
  * @apiName UpdateThermoNode
@@ -91,14 +58,11 @@ router.get('/:id',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Thermo node not found.
  */
-router.put('/:id',
-  body({
-    name,
-    status,
-    temp
-  }),
-  update)
-
+router.put("/:id", body({
+  name,
+  status,
+  temp
+}), update);
 /**
  * @api {delete} /thermoNodes/:id Delete thermo node
  * @apiName DeleteThermoNode
@@ -106,7 +70,5 @@ router.put('/:id',
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Thermo node not found.
  */
-router.delete('/:id',
-  destroy)
-
-export default router
+router.delete("/:id", destroy);
+export default router;
