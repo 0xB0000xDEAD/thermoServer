@@ -8,27 +8,34 @@
   <br>
   <p> {{otherData}}</p>
   <br>
-  <p> {{dataPoint}}</p>
+  <button @click="click">fai click!</button>
+  <br>
+  <p> {{dots}}</p>
 
-  <!-- <trend :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]" :gradient="['#6fa8dc', '#42b983', '#2c3e50']" auto-draw smooth>
-  </trend> -->
-  <trend :data=graphDot :gradient="['#6fa8dc', '#42b983', '#2c3e50']" auto-draw smooth>
+
+  <trend :data=dots :gradient="['#6fa8dc', '#b96d42', '#c12a2a']" auto-draw smooth>
   </trend>
 </div>
 </template>
+
+
 
 <script>
 // import trendChart from 'api/chart/' // sempre problemi con il path dell'import
 //  chart = trendChart;
 import Vue from "vue";
 import Trend from "vuetrend";
-
 Vue.use(Trend);
+
+import exampleMixin from './mixing'
+
 export default {
-  data: function() {
-    return {};
-  }
-};
+    mixins: [exampleMixin],
+    data: function () {
+        return {
+        }
+    }
+}
 </script>
 
 <style>

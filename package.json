@@ -71,6 +71,7 @@
     "rand-token": "^0.3.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "vue-server-renderer": "^2.5.13",
     "vuetrend": "^0.2.3"
   }
 }

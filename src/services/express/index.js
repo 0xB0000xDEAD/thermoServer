@@ -29,6 +29,13 @@ export default (apiRoot, routes) => {
   //console.log(vueOptions.rootPath);
   const expressVueMiddleware = expressVue.init(vueOptions);
   app.use(expressVueMiddleware);
+
+
+  //ssr vue
+  const Vue = require('vue')
+  const renderer = require('vue-server-renderer').createRenderer()
+  //import ssr from ()
+
   // view engine setup
   app.set('view engine', 'pug');
   app.set('views', './src/views');
