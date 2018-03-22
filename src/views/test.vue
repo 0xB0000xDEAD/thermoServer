@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <img src="assets/logo.png"></p>
+  <!-- <img src="assets/logo.png"> -->
   <br>
   <p>Questa è una view con vue!</p>
   <br>
@@ -8,12 +8,13 @@
   <br>
   <p> {{otherData}}</p>
   <br>
-  <button @click="click">fai click!</button>
+  
+  <button @click="hello()">guarda in console</button>
   <br>
   <p> {{dots}}</p>
 
 
-  <trend :data=dots :gradient="['#6fa8dc', '#b96d42', '#c12a2a']" auto-draw smooth>
+  <trend :data=dummy :gradient="['#6fa8dc', '#b96d42', '#c12a2a']" auto-draw smooth>
   </trend>
 </div>
 </template>
@@ -27,20 +28,22 @@ import Vue from "vue";
 import Trend from "vuetrend";
 Vue.use(Trend);
 
-import exampleMixin from './mixing'
+import exampleMixin from "../api/dash/mixing";
 
 export default {
-    mixins: [exampleMixin],
-    data: function () {
-        return {
-        }
-    }
-}
+  mixins: [exampleMixin],
+  data: function() {
+    return {};
+  },
+  components: {
+    Trend
+  }
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

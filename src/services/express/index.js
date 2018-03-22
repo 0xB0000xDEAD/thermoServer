@@ -24,24 +24,24 @@ export default (apiRoot, routes) => {
     layout: {
       start: '<div id="app">',
       end: '</div>'
+    },
+    vue: {
+      head: {
+        meta: [{
+          script: 'https://vuejs.org/js/vue.js'
+        }]
+      }
     }
   }
   //console.log(vueOptions.rootPath);
   const expressVueMiddleware = expressVue.init(vueOptions);
   app.use(expressVueMiddleware);
-
-
-  //ssr vue
-  const Vue = require('vue')
-  const renderer = require('vue-server-renderer').createRenderer()
-  //import ssr from ()
-
   // view engine setup
   app.set('view engine', 'pug');
   app.set('views', './src/views');
   //inserire prima delle routes
   //Make our db accessible to our router
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     req.db = mosca_db;
     next();
   });

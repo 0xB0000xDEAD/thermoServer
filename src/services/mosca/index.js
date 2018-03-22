@@ -45,43 +45,42 @@ var message = {
 
 
 
-  const server = new mosca.Server(moscaSettings);
+const server = new mosca.Server(moscaSettings);
 
 
 
-  server.on('ready', init);
+server.on('ready', init);
 
-  server.on('clientConnected', function(client) {
-    console.log('client connected', client.id);
+server.on('clientConnected', function (client) {
+  console.log('client connected', client.id);
+});
+
+// fired when a message is received
+server.on('published', function (packet, client) {
+  console.log('Published', packet.payload);
+  var events = mosca_db.get('events'); // qui sta il tutto events è una collection
+  events.insert({
+    message: packet
   });
 
-  // fired when a message is received
-  server.on('published', function(packet, client) {
-    //console.log('Published', packet.payload);
-    var events = mosca_db.get('events');
-    events.insert({
-      message: packet
-    });
-    console.log('Pub');
-
-  });
+});
 
 
-  // fired when the mqtt server is ready
-  function init() {
-    console.log('Mosca server is up and running');
-    // console.log('path di mosca è :' +server.path);
-    // console.log('port di mosca è :' +server.port);
-    // console.log('port di mosca è :' +server.address);
+// fired when the mqtt server is ready
+function init() {
+  console.log('Mosca server is up and running');
+  // console.log('path di mosca è :' +server.path);
+  // console.log('port di mosca è :' +server.port);
+  // console.log('port di mosca è :' +server.address);
 
-    //console.log(message);
-    var useDummy = 0;
-    if (useDummy) {
-      for (i=0; i < 5; i++) {
-        server.publish(message, function() {
-          console.log('mqtt message nr. ' + i + 'published in ' + message.topic);
-        });
-      }
+  //console.log(message);
+  var useDummy = 0;
+  if (useDummy) {
+    for (i = 0; i < 5; i++) {
+      server.publish(message, function () {
+        console.log('mqtt message nr. ' + i + 'published in ' + message.topic);
+      });
     }
   }
-  export default mosca_db 
+}
+export default mosca_db

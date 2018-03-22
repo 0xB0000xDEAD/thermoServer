@@ -1,7 +1,8 @@
-module.exports {
-    methods: {
-        hello: function () {
-            console.log('Hello');
-        }
+module.exports = {
+  methods: {
+    hello: function () {
+      console.log('Hello');
+      // db.ascoltatori.remove();
     }
+  }
 }
