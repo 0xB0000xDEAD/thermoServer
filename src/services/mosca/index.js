@@ -3,6 +3,9 @@
 
 import monk from 'monk'
 import mosca from 'mosca'
+import {
+  functionDeclaration
+} from 'babel-types';
 
 var mosca_db = monk('localhost:27017/mqtt'); // questo è ildatabase a cui si accede
 mosca_db.then(() => {
@@ -50,21 +53,44 @@ const server = new mosca.Server(moscaSettings);
 
 
 server.on('ready', init);
+let dummyId;
 
 server.on('clientConnected', function (client) {
   console.log('client connected', client.id);
+  dataModel.name = client.id
+  ThermoNode.create(dataModel)
+
 });
+
+
+import {
+  ThermoNode
+} from '../../api/thermoNode/index'
 
 // fired when a message is received
 server.on('published', function (packet, client) {
-  console.log('Published', packet.payload);
-  var events = mosca_db.get('events'); // qui sta il tutto events è una collection
+  console.log('Published', packet.payload.toString());
+  var events = mosca_db.get('events');
   events.insert({
-    message: packet
+    message: packet.payload.toString()
   });
+
+  dataModel.name = packet.payload.toString();
+
+
+
+  ThermoNode.findById(dummyId).then(function (node) {
+    node ? Object.assign(thermoNode, dataModel).save() : null;
+  }).catch(err => console.log(err));
 
 });
 
+
+let dataModel = {
+  name: '',
+  status: false,
+  temp: 0
+}
 
 // fired when the mqtt server is ready
 function init() {

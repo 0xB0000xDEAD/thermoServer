@@ -26,7 +26,7 @@
 //  chart = trendChart;
 import Vue from "vue";
 import Trend from "vuetrend";
-Vue.use(Trend);
+// Vue.use(Trend);
 
 import exampleMixin from "../api/dash/mixing";
 
@@ -35,9 +35,7 @@ export default {
   data: function() {
     return {};
   },
-  components: {
-    Trend
-  }
+  components: { Trend } // break the mixing and vue debug extension
 };
 </script>
 

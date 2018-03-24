@@ -31,7 +31,7 @@ router.get('/test', function (req, res, next) {
   const data = {
     otherData: 'something else',
     dots: graphDots,
-    dummy: [1, 2, 3, 4, 5, 4, 5, 6, 7, 6, 7, 8, 9],
+    dummy: [1, 2, 9, 4, 5, 4, 5, 6, 7, 6, -3, 8, 9]
   };
   // const methods = {
   //   click: function () {
