@@ -1,4 +1,6 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, {
+  Schema
+} from 'mongoose'
 const thermoNodeSchema = new Schema({
   name: {
     type: String
@@ -7,13 +9,15 @@ const thermoNodeSchema = new Schema({
     type: String
   },
   temp: {
-    type: String
+    type: Array
   }
 }, {
   timestamps: true,
   toJSON: {
     virtuals: true,
-    transform: (obj, ret) => { delete ret._id }
+    transform: (obj, ret) => {
+      delete ret._id
+    }
   }
 })
 thermoNodeSchema.methods = {
@@ -23,11 +27,7 @@ thermoNodeSchema.methods = {
       id: this.id,
       name: this.name,
       status: this.status,
-      temp: this.temp0,
-      temp: this.temp1,
-      temp: this.temp2,
-      temp: this.temp3,
-      temp: this.temp4,
+      temp: this.temp,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }

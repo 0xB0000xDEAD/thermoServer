@@ -14,7 +14,7 @@
   <p> {{dots}}</p>
 
 
-  <trend :data=dummy :gradient="['#6fa8dc', '#b96d42', '#c12a2a']" auto-draw smooth>
+  <trend :data=dots :gradient="['#6fa8dc', '#b96d42', '#c12a2a']" auto-draw smooth>
   </trend>
 </div>
 </template>

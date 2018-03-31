@@ -1,11 +1,33 @@
-import { Router } from "express";
-import { middleware as query } from "querymen";
-import { middleware as body } from "bodymen";
-import { create, index, show, update, destroy } from "./controller";
-import { schema } from "./model";
-export ThermoNode, { schema } from "./model";
+import {
+  Router
+} from "express";
+import {
+  middleware as query
+} from "querymen";
+import {
+  middleware as body
+} from "bodymen";
+import {
+  create,
+  index,
+  show,
+  update,
+  destroy,
+  showByName
+} from "./controller";
+import {
+  schema
+} from "./model";
+export ThermoNode, {
+  schema
+}
+from "./model";
 const router = new Router();
-const { name, status, temp } = schema.tree;
+const {
+  name,
+  status,
+  temp
+} = schema.tree;
 /**
  * @api {post} /thermoNodes Create thermo node
  * @apiName CreateThermoNode
@@ -31,13 +53,6 @@ router.post("/", body({
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
 router.get('/', query(), index)
-// aggiunta mia
-// router.get("/", query(), function(req, res) {
-//   //console.log(res);
-//   res.render("thermo", {
-//     title: "Express"
-//   });
-// });
 /**
  * @api {get} /thermoNodes/:id Retrieve thermo node
  * @apiName RetrieveThermoNode
@@ -47,6 +62,15 @@ router.get('/', query(), index)
  * @apiError 404 Thermo node not found.
  */
 router.get("/:id", show);
+/**
+ * @api {get} /thermoNodes/:name Retrieve thermo node
+ * @apiName RetrieveThermoNode
+ * @apiGroup ThermoNode
+ * @apiSuccess {Object} thermoNode Thermo node's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 404 Thermo node not found.
+ */
+router.get("/:name", showByName);
 /**
  * @api {put} /thermoNodes/:id Update thermo node
  * @apiName UpdateThermoNode

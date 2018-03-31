@@ -12,21 +12,23 @@ router.get('/', function (req, res) {
 let graphDots = [];
 
 router.get('/test', function (req, res, next) {
-  // model.find({
-  //   name: 'salotto'
-  // }, 'temp', function (err, result) {
-  //   if (err) return console.log(err);
-  //   //console.log('%s created at %s.', result.name, result.status) // Space Ghost is a talk show host.
-  //   //console.log('la ricerca ritorna un: ', typeof(result));
-  //   console.log(result);
 
-  //   // graphDots = result.map(value => parseFloat(value.temp));
-  //   graphDots = result.filter((entry) => {
-  //     return entry != NaN
-  //   }).map(value => parseFloat(value.temp));
-  //   console.log(graphDots);
-  // })
-  console.log(graphDots);
+  model.find({
+    name: 'esp3210c40a24'
+  }, 'temp', function (err, result) {
+    if (err) return console.log(err);
+    //console.log('%s created at %s.', result.name, result.status) // Space Ghost is a talk show host.
+    //console.log('la ricerca ritorna un: ', typeof(result));
+    console.log(result[0].temp);
+
+    graphDots = result[0].temp;
+
+    // graphDots = result.map(value => parseFloat(value.temp));
+    // graphDots = result.filter((entry) => {
+    //   return entry != NaN
+    // }).map(value => parseFloat(value.temp));
+    // console.log(graphDots);
+  })
 
   const data = {
     otherData: 'something else',
