@@ -17,7 +17,6 @@ function fillDummy(min, max) {
 }
 
 function updateGraphData(value) {
-  //
   if (graphData.length < 12) {
     graphData.push(value)
   } else {

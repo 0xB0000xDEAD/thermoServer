@@ -3,7 +3,6 @@ import user from './user'
 import auth from './auth'
 import thermoNode from './thermoNode'
 import dash from './dash'
-import node from './node'
 const router = new Router()
 /**
  * @apiDefine master Master access only
@@ -31,6 +30,5 @@ const router = new Router()
 router.use('/users', user)
 router.use('/auth', auth)
 router.use('/thermoNodes', thermoNode)
-router.use('/dash', dash)
-router.use('/nodes', node)
+// router.use('/dash', dash)
 export default router

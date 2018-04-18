@@ -31,11 +31,12 @@ const config = {
         }
       }
     },
-    // placeholder
   },
   test: {
     mongo: {
+      // uri: 'mongodb://localhost/rest',
       uri: 'mongodb://localhost/rest',
+
       options: {
         debug: false
       }
@@ -43,7 +44,10 @@ const config = {
   },
   development: {
     mongo: {
+      // uri: 'mongodb://localhost/rest',
+      // uri: 'mongodb://db/rest',
       uri: 'mongodb://localhost/rest',
+
       options: {
         debug: true
       }
@@ -53,7 +57,9 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/rest'
+      // uri: process.env.MONGODB_URI || 'mongodb://localhost/rest'
+      uri: 'mongodb://localhost/rest',
+
     }
   }
 }

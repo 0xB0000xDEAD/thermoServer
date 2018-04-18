@@ -1,6 +1,6 @@
 {
-  "name": "rest-server",
-  "version": "0.0.0",
+  "name": "thermo",
+  "version": "0.0.1",
   "main": "src",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "dev": "nodemon -i \"*.test.js\" .",
+    "dev-debug": "nodemon --nolazy --inspect=0.0.0.0:9222 -i \"*.test.js\" .",
     "prod": "cross-env NODE_ENV=production nodemon -i \"*.test.js\" -r dotenv-safe/config .",
     "lint": "eslint src",
     "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md",

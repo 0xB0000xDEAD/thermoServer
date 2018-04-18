@@ -1,9 +1,16 @@
-# rest-server v0.0.0
+# thermo v0.0.1
 
 
 
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
+	
+- [Node](#node)
+	- [Create node](#create-node)
+	- [Delete node](#delete-node)
+	- [Retrieve node](#retrieve-node)
+	- [Retrieve nodes](#retrieve-nodes)
+	- [Update node](#update-node)
 	
 - [ThermoNode](#thermonode)
 	- [Create thermo node](#create-thermo-node)
@@ -42,6 +49,77 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
+
+# Node
+
+## Create node
+
+
+
+	POST /nodes
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| name			| 			|  <p>Node's name.</p>							|
+| temp			| 			|  <p>Node's temp.</p>							|
+| temp1			| 			|  <p>Node's temp1.</p>							|
+| temp2			| 			|  <p>Node's temp2.</p>							|
+| temp3			| 			|  <p>Node's temp3.</p>							|
+| temp4			| 			|  <p>Node's temp4.</p>							|
+| status			| 			|  <p>Node's status.</p>							|
+
+## Delete node
+
+
+
+	DELETE /nodes/:id
+
+
+## Retrieve node
+
+
+
+	GET /nodes/:id
+
+
+## Retrieve nodes
+
+
+
+	GET /nodes
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update node
+
+
+
+	PUT /nodes/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| name			| 			|  <p>Node's name.</p>							|
+| temp			| 			|  <p>Node's temp.</p>							|
+| temp1			| 			|  <p>Node's temp1.</p>							|
+| temp2			| 			|  <p>Node's temp2.</p>							|
+| temp3			| 			|  <p>Node's temp3.</p>							|
+| temp4			| 			|  <p>Node's temp4.</p>							|
+| status			| 			|  <p>Node's status.</p>							|
 
 # ThermoNode
 
